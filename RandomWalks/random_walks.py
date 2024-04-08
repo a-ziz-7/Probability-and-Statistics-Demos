@@ -4,18 +4,12 @@ import random
 def randomWalk(arg):
 
     particle_pos = 0
-    x = arg
-    arr = []
+    arr = set()
 
-    while x > 0:
+    for i in range(arg):
         if particle_pos not in arr:
-            arr.append(particle_pos)
-        rand = random.randint(0, 1)
-        if rand == 1:
-            particle_pos += 1
-        else:
-            particle_pos -= 1
-        x -= 1
+            arr.add(particle_pos)
+        particle_pos += 1 if random.randint(0, 1) else -1
     arr.sort()
     print(f"Random walk ({arg}) covered: {arr[0]}  ---  {arr[len(arr)-1]}")
     print(f"Particle position is {particle_pos}")
